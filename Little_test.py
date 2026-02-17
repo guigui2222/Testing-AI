@@ -1,8 +1,14 @@
+# This program is a litle test where I made
+# a neuron which has 3 random number
+# in input and an output synaps with a weight. It make than the sum of them
+# and multiply it by the synaps weight: realy basic.
+# I use a kinf of natural selection algorithm which repeat indefinitely.
+# and returns the weight of the best neuron of the generation.
 import random
 
-# définition du neurone
+# definition of a neuron
 
-class Neurone:
+class Neuron:
     def __init__(self, Input, weight):
         self.input=Input
         self.output=0
@@ -10,11 +16,11 @@ class Neurone:
     def forward(self):
         return(sum(self.input)*self.weight)
 
-# création du neurone
+# creation of the neuron
 
-a=Neurone([2, 1, 4], random.uniform(0, 2))
+a=Neuron([2, 1, 4], random.uniform(0, 2))
 
-# création d'une population et test de capacités
+# creation of a neuron population and testing it capacities
 
 meilleur=a.weight
 
@@ -28,7 +34,7 @@ while True:
         a.weight=meilleur+random.uniform(-0.1, 0.1)
         résultats[a.weight]=a.forward()
         
-# notation des résultats de chaque individu de la population
+# rating every neuron's synaps's weight and chosing the best
     meilleur=min(résultats, key=lambda x:(résultats[x]))
     
     print(meilleur1)
