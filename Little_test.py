@@ -9,8 +9,8 @@ import random
 # definition of a neuron
 
 class Neuron:
-    def __init__(self, Input, weight):
-        self.input=Input
+    def __init__(self, input_nbr, weight):
+        self.input=input_nbr
         self.output=0
         self.weight=weight
     def forward(self):
