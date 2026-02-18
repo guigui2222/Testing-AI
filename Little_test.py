@@ -1,8 +1,8 @@
 # This program is a litle test where I made
 # a neuron which has 3 random number
-# in input and an output synaps with a weight. It make than the sum of them
+# in input and an output synaps with a weight. It makes than the sum of them
 # and multiply it by the synaps weight: realy basic.
-# I use a kinf of natural selection algorithm which repeat indefinitely.
+# I use a kind of natural selection algorithm which repeat indefinitely.
 # and returns the weight of the best neuron of the generation.
 import random
 
