@@ -131,15 +131,24 @@ class Network:
                     
                     neu.next=network[network.index(layr)+1]
                 neu.input_w=w*len(network[network.index(layr)-1])
+                
+                if network.index(layr)==0:
+                    neu.input_w=w
         self.first=network[0][0]
         self.input_nbr=[]
         self.network=network
     def run(self):
         for neu in self.network[0]:
-            print(self.network[0].index(neu))
+            
             neu.input_nbr=[self.input_nbr[self.network[0].index(neu)]]
         return self.first.run()
-
-
-
-
+        
+    def clear(self):
+        self.first.clear()
+        print("[...]Cleared")
+    def arch(self):
+        return self.first.arch()
+    def backpropagation(self, y):
+        
+        backpropagation(self.first.arch(), y, self.first.layer)
+        print("[...]BACKPROPAGATION")
