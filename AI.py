@@ -107,24 +107,39 @@ def change(network):
         
     for neu, w in network.items():
         neu.input_w=w
+class Network:
+    def __init__(self, layers):
+        network=[]
+        for l in layers:
+            lyr=[]
+            
+            for neu in range(l):
+                
+                exec(f"n{l}_{neu}=Neuron(input_nbr=[])")
+                
+                exec(f"lyr.append(n{l}_{neu})")
+                
+                
+            lyr[0].layer=lyr
+            network.append(lyr)
+
+        w=[1]
+        for layr in network:
+            for neu in layr:
+                
+                if network.index(layr)+1!=len(network):
+                    
+                    neu.next=network[network.index(layr)+1]
+                neu.input_w=w*len(network[network.index(layr)-1])
+        self.first=network[0][0]
+        self.input_nbr=[]
+        self.network=network
+    def run(self):
+        for neu in self.network[0]:
+            print(self.network[0].index(neu))
+            neu.input_nbr=[self.input_nbr[self.network[0].index(neu)]]
+        return self.first.run()
 
 
 
 
-n3_2=Neuron(input_nbr=[], input_w=[random.uniform(0, 1), random.uniform(0, 1)])
-n3_1=Neuron(input_nbr=[], input_w=[random.uniform(0, 1), random.uniform(0, 1)])
-n2_2=Neuron(input_nbr=[], input_w=[random.uniform(0, 1), random.uniform(0, 1)], next=[n3_1, n3_2])
-n2_1=Neuron(input_nbr=[], input_w=[random.uniform(0, 1), random.uniform(0, 1)], next=[n3_1, n3_2])
-n1_2=Neuron(input_nbr=[1], input_w=[random.uniform(0, 1)], next=[n2_1, n2_2])
-n1_1=Neuron(input_nbr=[0], input_w=[random.uniform(0, 1)], next=[n2_1, n2_2])
-n1_1.layer=[n1_1, n1_2]
-n2_1.layer=[n2_1, n2_2]
-n3_1.layer=[n3_1, n3_2]
-for i in range(1000):
-    n1_1.run()
-    print(loss(n3_1.input_w[0], n3_1.input_nbr[0], 1))
-    a=input()
-    backpropagation(n1_1.arch(), [1, 0], n1_1.layer)
-    n1_1.clear()
-    n1_1.input_nbr=[0]
-    n1_2.input_nbr=[1]
