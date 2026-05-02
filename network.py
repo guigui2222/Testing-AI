@@ -1,4 +1,4 @@
-from neurone import *
+from neuron import *
 from fonctions import *
 
 class Network:
