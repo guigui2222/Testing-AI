@@ -1,5 +1,5 @@
 from neuron import *
-from fonctions import *
+from function import *
 
 class Network:
     
