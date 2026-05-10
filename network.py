@@ -43,6 +43,8 @@ class Network:
         
         self.network=network
         
+        self.output_nbr=0
+
     def run(self):
         
         for neu in self.network[0]:
@@ -105,4 +107,14 @@ class Network:
                     neu.input_w[neu.input_w.index(w)]=w-0.01*erreur[1]
                     
                     neu.biais-=0.01*erreur[2]
-    
+    def reward(self, reward):
+        
+        excepted=[]
+        
+        for i in self.output:
+            if i==self.output_nbr:
+                reward.append(self.output_nbr*reward)
+            else:
+                reward.append(0)
+                
+        self.backpropagation(excepted)
